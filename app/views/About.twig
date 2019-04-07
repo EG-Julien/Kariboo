@@ -1,0 +1,36 @@
+{% extends "Template.twig" %}
+
+{% block content %}
+<div class="post__header" style="background: url('/img/bcg_about.png') no-repeat">
+    <div class="post__header__container"></div>
+</div>
+
+<div class="container">
+    <div class="post__content">
+        <ul class="breadcrumb">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="{{ path_for("about") }}">About</a></li>
+            <li class="active">Kariboo & Ju'</li>
+        </ul>
+        <div class="post__title center">
+            <h1>Kariboo & Ju'</h1>
+        </div>
+
+        <div class="justify">
+            <p class="justify lead">
+                First you may ask why Kariboo ?? The answer is realy simple in fact ! When I was a baby a friend of my prents wich is living in Canada give me a present. This present was two caribou. Twenty years later they are still in my bed ...
+            </p>
+            <div class="center">
+                <img class="img-circle" height="250px" src="/img/julien.jpg" alt="Julien">
+                <p>This is me ... Yeah you have to know that I'm a bit full of energy ...</p>
+            </div>
+            <p class="justify lead">
+                With that being said, I'm Julien, a 20 years old enginnering student at ENSEIRB-MATMECA (Bordeaux, France). I love IA, electronics, and computer science since I turned ten years old. Some years ago a bought some Arduino and Raspberry PI and start play with it. <br><br>
+
+                After some years and many little projects I wanted to achieve a big idea : Kariboo was born. Kariboo is an idea, the idea that anyone can create some eletronics device to simplify his own life. And now I'll share this with you, now you can create the same thing and share it again.
+            </p>
+        </div>
+        <span class="pull-right">Par <a href="//www.instagram.com/eg_julien/">Ju'</a></span>
+    </div>
+</div>
+{% endblock %}

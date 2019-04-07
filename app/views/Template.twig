@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Kariboo | Kariboo.cc</title>
+    <meta name="description"
+          content="Kariboo.cc is a website too show the world how simple is it to create some eletronics devices.">
+    <meta property="og:title" content="Kariboo | Kariboo.cc">
+    <meta property="og:description"
+          content="Kariboo.cc is a website too show the world how simple is it to create some eletronics devices.">
+    <meta name="author" content="Julien Geneste">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/app.min.css">
+    <script src="js/turbolinks.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+    <script>WebFont.load({
+        google: {
+            families: ["Karla:regular"]
+        }
+    });
+    </script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/mdeditor.css">
+    <script type="text/javascript" src="/js/modernizr.js"></script>
+    <link rel="shortcut icon" type="image/x-icon"
+          href="/img/IconsDev.png">
+    <link rel="apple-touch-icon"
+          href="/img/IconsDev.png">
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-84002031-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</head>
+
+<body>
+{# <div class="container" style="margin-top: 0px !important;">
+    <ul id="notifications" style="margin-top: 45px;" class="alert hidden">
+    
+    </ul>
+    <?php if (isset($_SESSION['slim.flash'])): ?>
+        <?php foreach ($_SESSION['slim.flash'] as $type => $msg): ?>
+            <div id="dimissible" class="over alert alert-<?= $type; ?>">
+                <ul>
+                    <li><?= $msg; ?></li>
+                </ul>
+            </div>
+        <?php endforeach ?>
+    <?php endif ?>
+</div> #}
+<div class="w-section header navbar-fixed-top" dyn-attr-style-border-color="color" style="margin-bottom: 165px !important;">
+    <div data-collapse="medium" data-animation="default" data-duration="400" class="w-nav navbar">
+        <div class="w-clearfix main-content-wrapper">
+            <div class="w-nav-button menu-button">
+                <div class="w-icon-nav-menu mobile-nav-menu-icon"></div>
+            </div>
+            <a href="/" class="w-nav-brand">
+              <img width="138" height="63" src="/img/Header Title.png" class="logo">
+            </a>
+            <nav role="navigation" class="w-nav-menu nav-menu">
+                <a href="{{ path_for("home") }}" class="w-nav-link new-nav-link">Home</a>
+
+                <a href="{{ path_for("posts") }}" class="w-nav-link new-nav-link">Posts</a>
+
+                <a href="{{ path_for("about") }}" class="w-nav-link new-nav-link">About</a>
+            </nav>
+        </div>
+    </div>
+</div>
+{% block content %}
+
+{% endblock %}
+    <div class="w-section footer">
+        <div class="w-clearfix main-content-wrapper">
+            <ul class="footer-links">
+                <li class="footer-link"><a class="footer-a" href="//https://www.instagram.com/eg_julien/">@eg_julien</a></li>
+                <li class="footer-link"><a class="footer-a" href="//https://www.instagram.com/karibootronics/">@karibootronics</a></li>
+                <li class="footer-link"><a href="mailto:julien.geneste@free.fr" class="footer-a">Contact</a></li>
+            </ul>
+            <div class="credit">
+                <div>&copy; Kariboo - Backend : Julien GENESTE - CSS : Webflow Thème</div>
+            </div>
+        </div>
+    </div>
+    <!--[if lte IE 9]>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script>
+    <![endif]-->
+    <script>
+        Turbolinks.start()
+    </script>
+    <script type="text/javascript" src="/js/highlight.pack.js"></script>
+    <script type="text/javascript" src="/js/tables.js"></script>
+    <script type="text/javascript" src="/js/Application.js"></script>
+    <script type="text/javascript" src="/js/qubs.js"></script>
+</body>
+</html>
