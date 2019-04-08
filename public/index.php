@@ -17,7 +17,7 @@ $app = new \Slim\App(
 require '../app/container.php';
 
 try {
-    $DB = new PDO('mysql:dbname=' . $dbname . ';host=' . $dbhost . ';charset=utf8', "$dbuser", "$dbpassword");
+    $DB = new PDO('mysql:dbname=' . $dbname . ';host=' . $dbhost . ';port=3306;charset=utf8', "$dbuser", "$dbpassword");
     $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $DB->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 } catch (Exception $e) {
@@ -29,5 +29,6 @@ try {
 $app->get('/', \App\Controllers\HomeCtrl::class . ':Home')->setName("home");
 $app->get('/about', \App\Controllers\HomeCtrl::class . ':About')->setName("about");
 $app->get('/posts', \App\Controllers\HomeCtrl::class . ':Posts')->setName("posts");
+$app->get('/post/{slug}', \App\Controllers\WorksCtrl::class . ':PostsRender')->setName("post_render");
 
 $app->run();

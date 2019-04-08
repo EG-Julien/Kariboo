@@ -6,7 +6,14 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 class WorksCtrl extends Controller {
-    public function WorksViewer(RequestInterface $request, ResponseInterface $response) {
-        $this->render($response, "Works.twig");
+
+    public function PostsRender(RequestInterface $request, ResponseInterface $response, $args) {
+
+        if (!isset($args['id'])) {
+            $this->render($response, "404.twig");
+        }
+
+        $this->render($response, "Post.twig");
     }
+
 }
