@@ -9,11 +9,15 @@ class WorksCtrl extends Controller {
 
     public function PostsRender(RequestInterface $request, ResponseInterface $response, $args) {
 
-        if (!isset($args['id'])) {
-            $this->render($response, "404.twig");
+        if (!isset($args['slug'])) {
+            return $this->render($response, "404.twig");
         }
 
-        $this->render($response, "Post.twig");
+        $request = self::getDB()->prepare("SELECT * FROM posts WHERE slug = ?");
+        $request->execute([$args['slug']]);
+        $post = $request->fetch();
+
+        return $this->render($response, "Post.twig", compact("post"));
     }
 
 }

@@ -1,7 +1,7 @@
 {% extends 'Template.twig' %}
 
 {% block content %}
-    <div class="post__header" style="background: url('/uploads/rN90kxCc6eLRqyAZiBT0VTCfa0KeWigDrRnhudRDGAlndAfRVTHUdkdW4juH.png') no-repeat">
+    <div class="post__header" style="background: url('/uploads/{{ post.thumbmail }}') no-repeat">
         <div class="post__header__container">
 
         </div>
@@ -12,19 +12,19 @@
             <ul class="breadcrumb">
                 <li><a href="/">Accueil</a></li>
                 <li><a href="#">Articles</a></li>
-                <li class="active">Titre</li>
+                <li class="active">{{ post.title }}</li>
             </ul>
             <div class="post__title center">
-                <h1>Titre</h1>
+                <h1>{{ post.title }}</h1>
             </div>
 
             <div class="justify">
                 <p class="justify">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    {{ post.content | nl2br }}
                 </p>
             </div>
-            <span class="pull-right">Par <a href="#">#</a></span>
-            <span class="pull-left">Il y a deux ans</span>
+            <span class="pull-right">Par <a href="#">{{ post.author }}</a></span>
+            <span class="pull-left">{{ post.date | date("F jS \\a\\t g:ia") }}</span>
         </div>
     </div>
 
