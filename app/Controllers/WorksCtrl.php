@@ -20,4 +20,11 @@ class WorksCtrl extends Controller {
         return $this->render($response, "Post.twig", compact("post"));
     }
 
+    public function Posts($request, $response) {
+        $request = self::getDB()->prepare("SELECT * FROM posts ORDER BY date DESC");
+        $request->execute();
+        $posts = $request->fetchAll();
+        $this->render($response, "Posts.twig", compact("posts"));
+    }
+
 }

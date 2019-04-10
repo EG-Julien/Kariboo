@@ -13,8 +13,4 @@ class HomeCtrl extends Controller {
     public function About($request, $response) {
         $this->render($response, "About.twig");
     }
-
-    public function Posts($request, $response) {
-        $this->render($response, "Posts.twig");
-    }
 }

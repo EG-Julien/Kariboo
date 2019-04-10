@@ -28,7 +28,7 @@ try {
 
 $app->get('/', \App\Controllers\HomeCtrl::class . ':Home')->setName("home");
 $app->get('/about', \App\Controllers\HomeCtrl::class . ':About')->setName("about");
-$app->get('/posts', \App\Controllers\HomeCtrl::class . ':Posts')->setName("posts");
+$app->get('/posts', \App\Controllers\WorksCtrl::class . ':Posts')->setName("posts");
 $app->get('/post/{slug}', \App\Controllers\WorksCtrl::class . ':PostsRender')->setName("post_render");
 
 $app->run();
