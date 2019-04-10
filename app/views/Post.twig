@@ -19,7 +19,7 @@
             </div>
 
             <div class="justify">
-                    {{ post.content | nl2br }}
+                    {{ post.content | markdown }}
             </div>
             <span class="pull-right">By <a href="#">{{ post.author }}</a></span>
             <span class="pull-left" data-ago="{{ post.date }}"></span>

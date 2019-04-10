@@ -4574,12 +4574,13 @@
  * ----------------------------------------------------------------------
  * Webflow: Interactions: Init
  */
-Webflow.require('ix').init([
-  {"slug":"gradient-fade","name":"Gradient Fade","value":{"style":{"opacity":1},"triggers":[{"type":"load","preload":true,"stepsA":[{"opacity":0.3,"wait":700,"transition":"opacity 500ms ease 0ms"}],"stepsB":[]}]}}
-]);
 
-(function($){
-  setTimeout(function(){
-    $("#dimissible").fadeOut();
-  }, 3000);
-})(jQuery);
+    Webflow.require('ix').init([
+        {"slug":"gradient-fade","name":"Gradient Fade","value":{"style":{"opacity":1},"triggers":[{"type":"load","preload":true,"stepsA":[{"opacity":0.3,"wait":700,"transition":"opacity 500ms ease 0ms"}],"stepsB":[]}]}}
+    ]);
+
+    (function($){
+        setTimeout(function(){
+            $("#dimissible").fadeOut();
+        }, 3000);
+    })(jQuery);

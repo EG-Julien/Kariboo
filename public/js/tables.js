@@ -3284,4 +3284,6 @@
     return h.fn.dataTable
 });
 
-$('#posts').DataTable()
+document.addEventListener("turbolinks:load", function() {
+    $('#posts').DataTable()
+})
