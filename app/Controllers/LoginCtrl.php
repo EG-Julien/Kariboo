@@ -29,6 +29,8 @@ class LoginCtrl extends Controller {
 
         $_SESSION["auth"] = $user;
 
+        var_dump($_SESSION);
+
         return $response->withRedirect('/');
     }
 }

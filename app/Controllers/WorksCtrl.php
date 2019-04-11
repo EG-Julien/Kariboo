@@ -4,6 +4,9 @@ namespace App\Controllers;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Slim\Http\Request;
+use Slim\Http\Response;
+use Slim\Http\UploadedFile;
 
 class WorksCtrl extends Controller {
 
@@ -98,6 +101,17 @@ class WorksCtrl extends Controller {
 
         $post = $request->getParsedBody();
 
+        $directory = __DIR__ . '/public/img/background';
+        $uploadedFiles = $request->getUploadedFiles();
+
+        $uploadedFile = $uploadedFiles['thumbmail'];
+
+        var_dump($uploadedFiles);
+
+        if ($uploadedFile->getError() === UPLOAD_ERR_OK) {
+            $filename = $this->moveUploadedFile($directory, $uploadedFile);
+        }
+
         $slug = $this->create_slug($post["title"]);
 
         $r = self::getDB()->prepare("INSERT INTO posts (title, slug, teaser, trending, author, date, content, thumbmail) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
@@ -109,10 +123,30 @@ class WorksCtrl extends Controller {
             $post["author"],
             time(),
             $post["content"],
-            "test.jpg"
+            $filename
         ]);
 
         return $response->withRedirect('/post/' . $slug);
+    }
+
+    public function getContent($request, $response, $args) {
+        if (!isset($args['slug'])) {
+            return $this->render($response, "404.twig");
+        }
+
+        $request = self::getDB()->prepare("SELECT content FROM posts WHERE slug = ?");
+        $request->execute([$args['slug']]);
+        $post = $request->fetch();
+
+        if (empty($post)) {
+            return $this->render($response, "404.twig");
+        }
+
+        if (!isset($_SESSION["auth"])) {
+            return $response->withRedirect('/');
+        }
+
+        return print_r($post->content);
     }
 
     private function create_slug($title) {
@@ -124,6 +158,21 @@ class WorksCtrl extends Controller {
         $title = str_replace(' ', '-', $title);
 
         return $title . '-' . $new_id;
+    }
+
+    private function str_random($length){
+        $alphabet = "0123456789azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN";
+        return substr(str_shuffle(str_repeat($alphabet, $length)), 0, $length);
+    }
+
+    private function moveUploadedFile($directory, UploadedFile $uploadedFile)
+    {
+        $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
+        $basename = $this->str_random(20) . "." . $extension;
+
+        $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $basename);
+
+        return $basename;
     }
 
 }

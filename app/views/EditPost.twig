@@ -18,15 +18,17 @@
                     <h1><input class="form-control" type="text" name="title" value="{{ post.title }}"></h1>
                     <input class="form-control" type="text" name="teaser" value="{{ post.teaser }}">
                     <input class="form-control" type="text" name="trending" value="{{ post.trending }}">
-                    {% if post.authed %}
-                        <button class="btn btn-danger">Save</button>
-                    {% endif %}
                 </div>
 
                 <div id="layout">
                     <div id="test-editormd">
                         <textarea name="content" id="markdown-preview" cols="30" rows="10" style="display: none;"></textarea>
                     </div>
+                </div>
+                <div class="center">
+                    {% if post.authed %}
+                        <button class="btn btn-danger">Save</button>
+                    {% endif %}
                 </div>
                 <span class="pull-right">By <a href="#">{{ post.author }}</a></span>
                 <span class="pull-left" data-ago="{{ post.date }}"></span>
@@ -35,7 +37,7 @@
     </form>
     <script src="/js/editormd.js"></script>
     <script type="text/javascript">
-        var testEditor, render;
+        var testEditor;
 
         $(function() {
 
