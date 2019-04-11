@@ -16,6 +16,9 @@
             </ul>
             <div class="post__title center">
                 <h1>{{ post.title }}</h1>
+                {% if post.authed %}
+                    <a href="{{ path_for("post_edit", {'slug': post.slug}) }}" class="btn btn-danger">Edit</a>
+                {% endif %}
             </div>
 
             <div class="justify">

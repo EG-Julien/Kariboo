@@ -30,5 +30,10 @@ $app->get('/', \App\Controllers\HomeCtrl::class . ':Home')->setName("home");
 $app->get('/about', \App\Controllers\HomeCtrl::class . ':About')->setName("about");
 $app->get('/posts', \App\Controllers\WorksCtrl::class . ':Posts')->setName("posts");
 $app->get('/post/{slug}', \App\Controllers\WorksCtrl::class . ':PostsRender')->setName("post_render");
+$app->get('/edit/post/{slug}', \App\Controllers\WorksCtrl::class . ':PostsEditor')->setName("post_edit");
+$app->post('/edit/post/{slug}', \App\Controllers\WorksCtrl::class . ':DoPostsEditor');
+
+$app->get('/login', \App\Controllers\LoginCtrl::class . ':Login')->setName("login");
+$app->post('/login', \App\Controllers\LoginCtrl::class . ':getAuth');
 
 $app->run();

@@ -6,5 +6,5 @@
 
 $dbuser     = "root";
 $dbpassword = "root";
-$dbhost     = "localhost";
+$dbhost     = "127.0.0.1";
 $dbname     = "kariboo";
