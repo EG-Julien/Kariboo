@@ -82,4 +82,48 @@ class WorksCtrl extends Controller {
         return $response->withRedirect('/post/' . $args['slug']);
     }
 
+    public function NewPost($request, $response) {
+
+        if (!isset($_SESSION["auth"])) {
+            return $response->withRedirect('/');
+        }
+
+        $this->render($response, "NewPost.twig");
+    }
+
+    public function SaveNewPost($request, $response) {
+        if (!isset($_SESSION["auth"])) {
+            return $response->withRedirect('/');
+        }
+
+        $post = $request->getParsedBody();
+
+        $slug = $this->create_slug($post["title"]);
+
+        $r = self::getDB()->prepare("INSERT INTO posts (title, slug, teaser, trending, author, date, content, thumbmail) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $r->execute([
+            $post["title"],
+            $slug,
+            $post["teaser"],
+            $post["trending"],
+            $post["author"],
+            time(),
+            $post["content"],
+            "test.jpg"
+        ]);
+
+        return $response->withRedirect('/post/' . $slug);
+    }
+
+    private function create_slug($title) {
+        $r = self::getDB()->prepare("SELECT id FROM posts ORDER BY id DESC LIMIT 1");
+        $r->execute();
+        $last_id = $r->fetch();
+
+        $new_id = $last_id + 1;
+        $title = str_replace(' ', '-', $title);
+
+        return $title . '-' . $new_id;
+    }
+
 }

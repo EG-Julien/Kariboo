@@ -33,6 +33,11 @@ $app->get('/post/{slug}', \App\Controllers\WorksCtrl::class . ':PostsRender')->s
 $app->get('/edit/post/{slug}', \App\Controllers\WorksCtrl::class . ':PostsEditor')->setName("post_edit");
 $app->post('/edit/post/{slug}', \App\Controllers\WorksCtrl::class . ':DoPostsEditor');
 
+$app->get("/post/get/content/{slug}", \App\Controllers\WorksCtrl::class . ':getContent');
+
+$app->get('/new/post/', \App\Controllers\WorksCtrl::class . ':NewPost')->setName("new");
+$app->post('/new/post/', \App\Controllers\WorksCtrl::class . ':SaveNewPost');
+
 $app->get('/login', \App\Controllers\LoginCtrl::class . ':Login')->setName("login");
 $app->post('/login', \App\Controllers\LoginCtrl::class . ':getAuth');
 

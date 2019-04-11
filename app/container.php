@@ -29,3 +29,6 @@ $container['notFoundHandler'] = function ($container) {
         return $container->view->render($response, "404.twig");
     };
 };
+
+$container["view"]->getEnvironment()->addGlobal('session', $_SESSION);
+

@@ -11,6 +11,7 @@
     <meta name="author" content="Julien Geneste">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/css/app.min.css">
+    <link rel="stylesheet" href="/css/editormd.css" />
     <script src="/js/turbolinks.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
@@ -69,6 +70,10 @@
                 <a href="{{ path_for("posts") }}" class="w-nav-link new-nav-link">Posts</a>
 
                 <a href="{{ path_for("about") }}" class="w-nav-link new-nav-link">About</a>
+
+                {% if session.auth %}
+                    <a href="{{ path_for("new") }}" class="w-nav-link new-nav-link">New post</a>
+                {% endif %}
             </nav>
         </div>
     </div>
